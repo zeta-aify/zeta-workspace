@@ -2,8 +2,17 @@
 
 // Supabase Configuration
 const SUPABASE_URL = 'https://lhepmymamxuuibjpstxs.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_odZK2XdQ-T6KHztF41y6Og_2sNvCrUP';
-const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxoZXBteW1hbXh1dWlianBzdHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MjMwOTYsImV4cCI6MjA4NjE5OTA5Nn0.CPcKZ9s_wbrsEcFFrQc98lHmISQEOVHWQEZ7WRUZ3cg';
+
+// Initialize Supabase client safely (won't crash if library not loaded)
+let supabase = null;
+try {
+    if (window.supabase) {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    }
+} catch (e) {
+    console.warn('Supabase init failed:', e);
+}
 
 class Web3Daily {
     constructor() {
