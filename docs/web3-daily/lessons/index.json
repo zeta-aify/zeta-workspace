@@ -1,9 +1,87 @@
 {
-  "lessons": [],
+  "lessons": [
+    {
+      "id": "lesson-2026-02-09",
+      "date": "2026-02-09",
+      "title": "Välkommen till Web3!",
+      "subtitle": "Din resa in i den decentraliserade framtiden börjar här",
+      "whyThisMatters": {
+        "sv": "Web3 är inte bara teknik – det är ett paradigmskifte i hur vi tänker på ägandeskap, förtroende och kontroll över våra digitala liv. För din kund inom sjukvården kan blockchain revolutionera hur patientdata hanteras: säkert, transparent och i patientens kontroll. Idag lägger vi grunden!",
+        "en": "Web3 isn't just technology – it's a paradigm shift in how we think about ownership, trust, and control of our digital lives. For your healthcare client, blockchain can revolutionize how patient data is managed: secure, transparent, and in the patient's control. Today we lay the foundation!"
+      },
+      "content": [
+        {
+          "type": "video",
+          "title": "Web3 Explained in 5 Minutes",
+          "description": "En snabb, enkel introduktion till vad Web3 faktiskt är.",
+          "url": "https://www.youtube.com/watch?v=nHhAEkG1y2U",
+          "duration": "5 min",
+          "source": "YouTube"
+        },
+        {
+          "type": "article",
+          "title": "What is Web3?",
+          "description": "Ethereums officiella guide till Web3 – djupare förståelse.",
+          "url": "https://ethereum.org/en/web3/",
+          "duration": "15 min",
+          "source": "Ethereum.org"
+        },
+        {
+          "type": "video",
+          "title": "Blockchain Demo",
+          "description": "Interaktiv demo som visar hur blockchain faktiskt fungerar.",
+          "url": "https://andersbrownworth.com/blockchain/",
+          "duration": "10 min",
+          "source": "Anders Brownworth"
+        }
+      ],
+      "keyTakeaways": {
+        "sv": [
+          "Web1 = läsa, Web2 = läsa + skriva, Web3 = läsa + skriva + äga",
+          "Blockchain är en delad databas som ingen enskild aktör kontrollerar",
+          "Decentralisering = ingen central punkt som kan hackas eller censureras",
+          "Smart contracts är kod som körs automatiskt på blockkedjan"
+        ],
+        "en": [
+          "Web1 = read, Web2 = read + write, Web3 = read + write + own",
+          "Blockchain is a shared database that no single entity controls",
+          "Decentralization = no central point that can be hacked or censored",
+          "Smart contracts are code that runs automatically on the blockchain"
+        ]
+      },
+      "questions": {
+        "sv": [
+          "Vad tänker du att decentralisering skulle kunna betyda för patientdata inom sjukvården?",
+          "Vilka problem ser du idag med hur data hanteras som blockchain potentiellt kunde lösa?"
+        ],
+        "en": [
+          "What do you think decentralization could mean for patient data in healthcare?",
+          "What problems do you see today with how data is handled that blockchain could potentially solve?"
+        ]
+      },
+      "deepDive": {
+        "intro": {
+          "sv": "Vill du gå djupare? Här är mer material:",
+          "en": "Want to go deeper? Here's more material:"
+        },
+        "resources": [
+          {
+            "type": "article",
+            "title": "Blockchain in Healthcare: A Comprehensive Guide",
+            "description": "Hur blockchain används inom sjukvården idag.",
+            "url": "https://www.ibm.com/topics/blockchain-healthcare",
+            "duration": "20 min"
+          }
+        ]
+      },
+      "timeEstimate": 45,
+      "topics": ["web3", "blockchain", "fundamentals"]
+    }
+  ],
   "meta": {
-    "lastUpdated": "2026-02-09T07:00:00Z",
+    "lastUpdated": "2026-02-09T08:40:00Z",
     "updatedBy": "Zeta",
-    "totalLessons": 0,
+    "totalLessons": 1,
     "curriculum": {
       "week1": "Web3 Fundamentals - Vad är blockchain, decentralisering, wallets",
       "week2": "Tokens & Smart Contracts - ERC-20, ERC-721 (NFTs), tokenisering",
