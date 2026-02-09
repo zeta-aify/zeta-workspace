@@ -1,0 +1,47 @@
+{
+  "projects": [
+    {
+      "id": "zeta-assistant",
+      "name": "Zeta AI Assistant",
+      "description": "AIFY's AI-assistent som hanterar automationer, kodning, forskning och kommunikation via Slack. Körs på Claude Opus 4.5 med OpenClaw.",
+      "status": "running",
+      "category": "automation",
+      "timeSavedHours": 40,
+      "timeSavedPeriod": "per vecka",
+      "createdAt": "2026-02-07",
+      "updatedAt": "2026-02-09",
+      "tech": ["OpenClaw", "Claude Opus", "Slack"],
+      "repo": "https://github.com/zeta-aify/zeta-workspace"
+    },
+    {
+      "id": "project-dashboard",
+      "name": "AIFY Project Dashboard",
+      "description": "Denna dashboard! Visar översikt över alla AIFY-projekt med status, beskrivningar och tidsbesparingsmetrik.",
+      "status": "development",
+      "category": "internal",
+      "timeSavedHours": 2,
+      "timeSavedPeriod": "per vecka",
+      "createdAt": "2026-02-09",
+      "updatedAt": "2026-02-09",
+      "tech": ["HTML", "CSS", "JavaScript"],
+      "repo": "https://github.com/zeta-aify/zeta-workspace/tree/main/dashboard"
+    },
+    {
+      "id": "maton-integrations",
+      "name": "Google Workspace Integration",
+      "description": "Integration med Gmail, Calendar, Docs och Drive via Maton.ai. Tillåter Zeta att läsa email, hantera kalender och skapa dokument.",
+      "status": "running",
+      "category": "integration",
+      "timeSavedHours": 5,
+      "timeSavedPeriod": "per vecka",
+      "createdAt": "2026-02-09",
+      "updatedAt": "2026-02-09",
+      "tech": ["Maton.ai", "Google API", "OAuth"],
+      "repo": null
+    }
+  ],
+  "meta": {
+    "lastUpdated": "2026-02-09T06:00:00Z",
+    "updatedBy": "Zeta"
+  }
+}
