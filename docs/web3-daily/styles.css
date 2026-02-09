@@ -651,6 +651,94 @@ body {
     margin-bottom: 24px;
 }
 
+/* Submit Section */
+.submit-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+    color: white;
+    padding: 14px 32px;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.submit-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.btn-secondary {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+}
+
+/* Submit Modal */
+.submit-modal-content {
+    max-width: 500px;
+    text-align: left;
+}
+
+.submit-modal-content h2 {
+    text-align: center;
+}
+
+.submit-modal-content > p {
+    text-align: center;
+}
+
+.submit-preview {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin: 20px 0;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    font-family: monospace;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.submit-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: var(--radius-sm);
+    color: var(--success);
+    font-weight: 500;
+}
+
+.success-icon {
+    font-size: 20px;
+}
+
 /* Activity Calendar */
 .activity-calendar {
     display: grid;

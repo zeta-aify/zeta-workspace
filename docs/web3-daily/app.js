@@ -138,6 +138,24 @@ class Web3Daily {
             });
         }
 
+        // Submit answers
+        const submitBtn = document.getElementById('submitAnswersBtn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', () => this.showSubmitModal());
+        }
+
+        const cancelSubmit = document.getElementById('cancelSubmit');
+        if (cancelSubmit) {
+            cancelSubmit.addEventListener('click', () => {
+                document.getElementById('submitModal').classList.remove('active');
+            });
+        }
+
+        const copyAndSubmit = document.getElementById('copyAndSubmit');
+        if (copyAndSubmit) {
+            copyAndSubmit.addEventListener('click', () => this.copyAndSubmitAnswers());
+        }
+
         // Settings
         const langSelect = document.getElementById('defaultLanguage');
         if (langSelect) {
@@ -448,6 +466,83 @@ class Web3Daily {
             if (l.topics) l.topics.forEach(t => topics.add(t));
         });
         return topics.size || this.progress.completedLessons.length;
+    }
+
+    // Submit functionality
+    showSubmitModal() {
+        const lesson = this.currentLesson;
+        if (!lesson) return;
+
+        const lang = this.currentLanguage;
+        const questions = typeof lesson.questions === 'object'
+            ? lesson.questions[lang] || lesson.questions.sv
+            : lesson.questions;
+
+        const answers = this.progress.answers[lesson.id] || {};
+        
+        // Format the submission
+        let formatted = `📚 Web3 Daily - ${lesson.title}\n`;
+        formatted += `📅 ${new Date().toLocaleDateString('sv-SE')}\n\n`;
+        formatted += `🤔 Mina reflektioner:\n\n`;
+
+        questions.forEach((q, i) => {
+            const answer = answers[i] || '(inget svar)';
+            formatted += `❓ ${q}\n`;
+            formatted += `💬 ${answer}\n\n`;
+        });
+
+        formatted += `---\nSkickat från Web3 Daily`;
+
+        // Store for copying
+        this.pendingSubmission = formatted;
+
+        // Show preview
+        document.getElementById('submitPreview').textContent = formatted;
+        document.getElementById('submitSuccess').style.display = 'none';
+        document.getElementById('submitModal').classList.add('active');
+    }
+
+    async copyAndSubmitAnswers() {
+        if (!this.pendingSubmission) return;
+
+        try {
+            await navigator.clipboard.writeText(this.pendingSubmission);
+            
+            // Show success
+            document.getElementById('submitSuccess').style.display = 'flex';
+            document.getElementById('copyAndSubmit').textContent = '✅ Kopierat!';
+            
+            // Mark as submitted in progress
+            if (this.currentLesson) {
+                if (!this.progress.submittedLessons) {
+                    this.progress.submittedLessons = [];
+                }
+                if (!this.progress.submittedLessons.includes(this.currentLesson.id)) {
+                    this.progress.submittedLessons.push(this.currentLesson.id);
+                }
+                this.saveProgress();
+            }
+
+            // Close modal after delay
+            setTimeout(() => {
+                document.getElementById('submitModal').classList.remove('active');
+                document.getElementById('copyAndSubmit').textContent = '📋 Kopiera & Skicka';
+            }, 2000);
+
+        } catch (err) {
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = this.pendingSubmission;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            document.getElementById('submitSuccess').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('submitModal').classList.remove('active');
+            }, 2000);
+        }
     }
 }
 
