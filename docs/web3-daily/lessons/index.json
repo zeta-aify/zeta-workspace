@@ -12,24 +12,24 @@
       "content": [
         {
           "type": "video",
-          "title": "Web3 Explained in 5 Minutes",
-          "description": "En snabb, enkel introduktion till vad Web3 faktiskt är.",
-          "url": "https://www.youtube.com/watch?v=nHhAEkG1y2U",
-          "duration": "5 min",
-          "source": "YouTube"
-        },
-        {
-          "type": "article",
-          "title": "What is Web3?",
-          "description": "Ethereums officiella guide till Web3 – djupare förståelse.",
-          "url": "https://ethereum.org/en/web3/",
-          "duration": "15 min",
-          "source": "Ethereum.org"
+          "title": "What Is Blockchain, DeFi & Web3? A Deep Dive (2025)",
+          "description": "Aktuell djupdykning i blockchain och Web3 med Polytope Labs grundare.",
+          "url": "https://www.youtube.com/watch?v=RdruO7k0Q_A",
+          "duration": "37 min",
+          "source": "Hyperbridge (feb 2026)"
         },
         {
           "type": "video",
+          "title": "The Future of Blockchain 2025-2030",
+          "description": "Prediktioner för blockchain-utvecklingen de kommande åren.",
+          "url": "https://www.youtube.com/watch?v=73v7dXVW8wQ",
+          "duration": "5 min",
+          "source": "Technologic Innovation (jan 2026)"
+        },
+        {
+          "type": "interactive",
           "title": "Blockchain Demo",
-          "description": "Interaktiv demo som visar hur blockchain faktiskt fungerar.",
+          "description": "Interaktiv demo som visar hur blockchain faktiskt fungerar. Tidlös klassiker!",
           "url": "https://andersbrownworth.com/blockchain/",
           "duration": "10 min",
           "source": "Anders Brownworth"
@@ -66,11 +66,18 @@
         },
         "resources": [
           {
+            "type": "video",
+            "title": "M-Pesa x Blockchain: How Web3 is Changing Africa (2026)",
+            "description": "Aktuellt exempel på blockchain i verkligheten - mobila pengar i Kenya.",
+            "url": "https://www.youtube.com/watch?v=8VzDgON87jA",
+            "duration": "3 min"
+          },
+          {
             "type": "article",
-            "title": "Blockchain in Healthcare: A Comprehensive Guide",
-            "description": "Hur blockchain används inom sjukvården idag.",
+            "title": "Blockchain in Healthcare (IBM Guide)",
+            "description": "Översikt av blockchain inom sjukvård.",
             "url": "https://www.ibm.com/topics/blockchain-healthcare",
-            "duration": "20 min"
+            "duration": "15 min"
           }
         ]
       },
