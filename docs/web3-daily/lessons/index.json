@@ -1,0 +1,15 @@
+{
+  "lessons": [],
+  "meta": {
+    "lastUpdated": "2026-02-09T07:00:00Z",
+    "updatedBy": "Zeta",
+    "totalLessons": 0,
+    "curriculum": {
+      "week1": "Web3 Fundamentals - Vad är blockchain, decentralisering, wallets",
+      "week2": "Tokens & Smart Contracts - ERC-20, ERC-721 (NFTs), tokenisering",
+      "week3": "DeFi & DAOs - Decentralized finance, governance tokens",
+      "week4": "Real World Applications - Healthcare, supply chain, identitet",
+      "week5": "Advanced Topics - Layer 2, scalability, patientdata på blockchain"
+    }
+  }
+}

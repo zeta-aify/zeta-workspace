@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Daily - Din dagliga dos av blockchain-kunskap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">⛓️</span>
+                <span class="logo-text">Web3 Daily</span>
+            </div>
+            
+            <nav class="nav">
+                <a href="#" class="nav-item active" data-view="today">
+                    <span class="nav-icon">📚</span>
+                    <span>Dagens Lektion</span>
+                </a>
+                <a href="#" class="nav-item" data-view="archive">
+                    <span class="nav-icon">📁</span>
+                    <span>Arkiv</span>
+                </a>
+                <a href="#" class="nav-item" data-view="progress">
+                    <span class="nav-icon">📊</span>
+                    <span>Min Progress</span>
+                </a>
+                <a href="#" class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Inställningar</span>
+                </a>
+            </nav>
+
+            <div class="streak-box">
+                <div class="streak-number" id="streakCount">0</div>
+                <div class="streak-label">dagars streak 🔥</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Today View -->
+            <div id="todayView" class="view active">
+                <header class="header">
+                    <div class="header-content">
+                        <span class="date-badge" id="todayDate"></span>
+                        <h1 id="lessonTitle">Laddar dagens lektion...</h1>
+                        <p class="subtitle" id="lessonSubtitle"></p>
+                    </div>
+                    <div class="header-actions">
+                        <span class="time-estimate" id="timeEstimate">
+                            <span class="time-icon">⏱️</span>
+                            <span>~45 min</span>
+                        </span>
+                        <button class="btn btn-primary" id="markCompleteBtn">
+                            ✓ Markera som klar
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Why This Matters -->
+                <section class="card pitch-card">
+                    <div class="card-header">
+                        <h2>🎯 Varför detta ämne?</h2>
+                    </div>
+                    <div class="card-body">
+                        <p id="whyThisMatters" class="pitch-text"></p>
+                    </div>
+                </section>
+
+                <!-- Today's Content -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2>📖 Dagens innehåll</h2>
+                        <div class="language-toggle">
+                            <button class="lang-btn active" data-lang="sv">🇸🇪 Svenska</button>
+                            <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="contentList" class="content-list">
+                            <!-- Content items will be injected here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Takeaways -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2>💡 Viktiga insikter</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul id="keyTakeaways" class="takeaways-list">
+                            <!-- Takeaways will be injected here -->
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Reflection Questions -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2>🤔 Reflektionsfrågor</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="questionsContainer" class="questions">
+                            <!-- Questions will be injected here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Deep Dive (Optional) -->
+                <section class="card deep-dive-card">
+                    <div class="card-header">
+                        <h2>🔬 Vill du fördjupa dig?</h2>
+                        <span class="optional-badge">Valfritt</span>
+                    </div>
+                    <div class="card-body">
+                        <p id="deepDiveIntro"></p>
+                        <div id="deepDiveContent" class="deep-dive-content">
+                            <!-- Deep dive content will be injected here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Archive View -->
+            <div id="archiveView" class="view">
+                <header class="header">
+                    <h1>📁 Arkiv</h1>
+                    <p class="subtitle">Alla tidigare lektioner</p>
+                </header>
+                <div id="archiveList" class="archive-grid">
+                    <!-- Archive items will be injected here -->
+                </div>
+            </div>
+
+            <!-- Progress View -->
+            <div id="progressView" class="view">
+                <header class="header">
+                    <h1>📊 Min Progress</h1>
+                    <p class="subtitle">Spåra din Web3-resa</p>
+                </header>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalLessons">0</div>
+                        <div class="stat-label">Lektioner klara</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalHours">0</div>
+                        <div class="stat-label">Timmar läst</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="currentStreak">0</div>
+                        <div class="stat-label">Dagars streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="topicsCount">0</div>
+                        <div class="stat-label">Ämnen täckta</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📅 Aktivitetskalender</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="activityCalendar" class="activity-calendar">
+                            <!-- Calendar will be generated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settingsView" class="view">
+                <header class="header">
+                    <h1>⚙️ Inställningar</h1>
+                    <p class="subtitle">Anpassa din upplevelse</p>
+                </header>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Standardspråk</h3>
+                                <p>Vilket språk vill du ha som default för innehåll?</p>
+                            </div>
+                            <select id="defaultLanguage" class="setting-select">
+                                <option value="sv" selected>🇸🇪 Svenska</option>
+                                <option value="en">🇬🇧 English</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Påminnelser</h3>
+                                <p>Få påminnelser via Slack</p>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="remindersEnabled" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h3>Kunskapsnivå</h3>
+                                <p>Justera svårighetsgraden på innehållet</p>
+                            </div>
+                            <select id="difficultyLevel" class="setting-select">
+                                <option value="beginner" selected>Nybörjare</option>
+                                <option value="intermediate">Medel</option>
+                                <option value="advanced">Avancerad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Completion Modal -->
+    <div id="completionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">🎉</div>
+            <h2>Bra jobbat!</h2>
+            <p>Du har klarat dagens lektion. Fortsätt så här!</p>
+            <div class="modal-streak">
+                <span id="modalStreakCount">1</span> dagars streak 🔥
+            </div>
+            <button class="btn btn-primary" id="closeModal">Stäng</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

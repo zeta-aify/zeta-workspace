@@ -1,0 +1,13 @@
+{
+  "user": "andreas",
+  "startDate": "2026-02-10",
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "completedLessons": [],
+  "lastActivity": null,
+  "preferences": {
+    "language": "sv",
+    "reminderTimes": ["09:30", "18:00", "22:00"],
+    "timezone": "Asia/Bangkok"
+  }
+}
