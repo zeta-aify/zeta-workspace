@@ -5,10 +5,10 @@ const SUPABASE_URL = 'https://lhepmymamxuuibjpstxs.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxoZXBteW1hbXh1dWlianBzdHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA2MjMwOTYsImV4cCI6MjA4NjE5OTA5Nn0.CPcKZ9s_wbrsEcFFrQc98lHmISQEOVHWQEZ7WRUZ3cg';
 
 // Initialize Supabase client safely (won't crash if library not loaded)
-let supabase = null;
+let supabaseClient = null;
 try {
     if (window.supabase) {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     }
 } catch (e) {
     console.warn('Supabase init failed:', e);
@@ -527,7 +527,7 @@ class Web3Daily {
         const answers = this.progress.answers[lesson.id] || {};
 
         // Save to Supabase
-        if (supabase) {
+        if (supabaseClient) {
             try {
                 const submissions = questions.map((q, i) => ({
                     lesson_id: lesson.id,
@@ -536,7 +536,7 @@ class Web3Daily {
                     answer: answers[i] || ''
                 }));
 
-                const { error } = await supabase
+                const { error } = await supabaseClient
                     .from('lesson_responses')
                     .insert(submissions);
 
