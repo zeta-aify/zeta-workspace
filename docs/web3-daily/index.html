@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <div class="app">
@@ -244,17 +246,17 @@
         <div class="modal-content submit-modal-content">
             <div class="modal-icon">📤</div>
             <h2>Skicka dina svar</h2>
-            <p>Dina reflektioner kopieras till urklipp. Klistra in dem i Slack-chatten med Zeta!</p>
+            <p>Dina reflektioner sparas i databasen så Zeta kan läsa och anpassa kommande lektioner.</p>
             <div class="submit-preview" id="submitPreview">
                 <!-- Preview will be shown here -->
             </div>
             <div class="modal-actions">
                 <button class="btn btn-secondary" id="cancelSubmit">Avbryt</button>
-                <button class="btn btn-primary" id="copyAndSubmit">📋 Kopiera & Skicka</button>
+                <button class="btn btn-primary" id="copyAndSubmit">📤 Skicka svar</button>
             </div>
             <div class="submit-success" id="submitSuccess" style="display: none;">
                 <span class="success-icon">✅</span>
-                <span>Kopierat! Klistra in i Slack nu.</span>
+                <span>Sparat! Zeta har fått dina svar.</span>
             </div>
         </div>
     </div>

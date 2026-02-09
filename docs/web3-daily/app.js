@@ -1,5 +1,10 @@
 // Web3 Daily - Application Logic
 
+// Supabase Configuration
+const SUPABASE_URL = 'https://lhepmymamxuuibjpstxs.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_odZK2XdQ-T6KHztF41y6Og_2sNvCrUP';
+const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
 class Web3Daily {
     constructor() {
         this.currentLesson = null;
@@ -503,46 +508,57 @@ class Web3Daily {
     }
 
     async copyAndSubmitAnswers() {
-        if (!this.pendingSubmission) return;
+        if (!this.currentLesson) return;
 
-        try {
-            await navigator.clipboard.writeText(this.pendingSubmission);
-            
-            // Show success
-            document.getElementById('submitSuccess').style.display = 'flex';
-            document.getElementById('copyAndSubmit').textContent = '✅ Kopierat!';
-            
-            // Mark as submitted in progress
-            if (this.currentLesson) {
-                if (!this.progress.submittedLessons) {
-                    this.progress.submittedLessons = [];
+        const lesson = this.currentLesson;
+        const lang = this.currentLanguage;
+        const questions = typeof lesson.questions === 'object'
+            ? lesson.questions[lang] || lesson.questions.sv
+            : lesson.questions;
+        const answers = this.progress.answers[lesson.id] || {};
+
+        // Save to Supabase
+        if (supabase) {
+            try {
+                const submissions = questions.map((q, i) => ({
+                    lesson_id: lesson.id,
+                    lesson_title: lesson.title,
+                    question: q,
+                    answer: answers[i] || ''
+                }));
+
+                const { error } = await supabase
+                    .from('lesson_responses')
+                    .insert(submissions);
+
+                if (error) {
+                    console.error('Supabase error:', error);
+                } else {
+                    console.log('Saved to Supabase!');
                 }
-                if (!this.progress.submittedLessons.includes(this.currentLesson.id)) {
-                    this.progress.submittedLessons.push(this.currentLesson.id);
-                }
-                this.saveProgress();
+            } catch (err) {
+                console.error('Failed to save to Supabase:', err);
             }
-
-            // Close modal after delay
-            setTimeout(() => {
-                document.getElementById('submitModal').classList.remove('active');
-                document.getElementById('copyAndSubmit').textContent = '📋 Kopiera & Skicka';
-            }, 2000);
-
-        } catch (err) {
-            // Fallback for older browsers
-            const textarea = document.createElement('textarea');
-            textarea.value = this.pendingSubmission;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            
-            document.getElementById('submitSuccess').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById('submitModal').classList.remove('active');
-            }, 2000);
         }
+
+        // Show success
+        document.getElementById('submitSuccess').style.display = 'flex';
+        document.getElementById('copyAndSubmit').textContent = '✅ Skickat!';
+        
+        // Mark as submitted in progress
+        if (!this.progress.submittedLessons) {
+            this.progress.submittedLessons = [];
+        }
+        if (!this.progress.submittedLessons.includes(lesson.id)) {
+            this.progress.submittedLessons.push(lesson.id);
+        }
+        this.saveProgress();
+
+        // Close modal after delay
+        setTimeout(() => {
+            document.getElementById('submitModal').classList.remove('active');
+            document.getElementById('copyAndSubmit').textContent = '📤 Skicka svar';
+        }, 2000);
     }
 }
 
